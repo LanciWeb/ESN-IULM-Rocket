@@ -1,0 +1,44 @@
+body{
+	background-attachment: fixed;
+	background-image: url(http://www.esniulm.it/rocket/assets/img/matita.png);
+	background-position: left bottom;
+	background-repeat: repeat-x;
+	height:100%;
+	z-index:-1
+}
+
+.fa-address-book-o{
+	font-size: 21px;
+}
+
+.navbar-inverse .navbar-brand{
+	color: #fff;
+}
+
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:active{
+	color: #ed0599;
+}
+
+
+.userPic{
+	border-radius:50%;
+	min-height:50px;
+	min-width:50px;
+	overflow:hidden;
+	height:5vw;
+	width:5vw;
+}
+
+#messageBox{
+	margin-top: 10px;
+}
+
+#users h3{
+	display: inline-block; 
+	margin:5px;
+	padding-left:10px;
+}
+
+#users .page-header{
+	margin-top:20px;
+}

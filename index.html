@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="it" data-ng-app="fastTrack" data-ng-controller="mainCtrl">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="author" content="Marco Lancellotti" />
+		<meta name="description" content="Trova i contatti degli Erasmus in un batter d'occhio!" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>ESN IULM Rocket</title>
+		<link rel="icon" type="image/png" href="http://www.esniulm.it/ufficio/img/icona.png" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/angular-motion/0.4.4/angular-motion.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css" /> 
+	</head>
+	<body>
+		<header>
+			<nav class="nav navbar-inverse">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a href="#/" class="navbar-brand"><i class="fa fa-rocket"></i>  ESN IULM Rocket</a>
+					</div>
+					<form class="navbar-form navbar-right" name="authForm" id="authForm" novalidate>
+						<div class="input-group" >
+							<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+							<input type="password" class="form-control" placeholder="Password" name="password"  id="password" data-ng-focus="warningRemove()" data-ng-keyup="authCheck()" data-ng-model="password"  required />
+						</div>
+					</form>
+				</div>
+			</nav>
+		</header>
+		<div class="container-fluid">
+			<aside id="messageBox"></aside>
+			<div data-ng-show="authorized" data-ng-cloack>
+				<section id="users">
+					<header class="page-header">
+						<img src="{{pic}}" alt="{{user}}" class="userPic" /><h3 data-ng-bind="user"></h3>
+					</header>
+				</section>
+				<section id="results">
+					<div class="row">
+						<div class="col-md-8  offset-md-2">
+						<form name="searchForm">
+							<input type="search" placeholder="Cerca" class="form-control" data-ng-keyup="filter()" data-ng-model="search" />
+						</form>
+						</div>
+					</div>
+				</section>
+			<div>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script> -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-strap/2.3.12/angular-strap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-strap/2.3.12/angular-strap.tpl.js"></script> 
+		<script src="assets/scripts/module.js"></script>
+		<script src="assets/scripts/controller.js"></script>
+		<!-- <script src="assets/scripts/routing.js"></script> -->
+	</body>
+</html>
