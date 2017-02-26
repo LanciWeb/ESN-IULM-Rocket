@@ -6,7 +6,7 @@
 		<meta name="description" content="Trova i contatti degli Erasmus in un batter d'occhio!" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>ESN IULM Rocket</title>
-		<link rel="icon" type="image/png" href="http://www.esniulm.it/ufficio/img/icona.png" />
+		<link rel="icon" href="http://www.esniulm.it/profiles/satellite/themes/esnsatellite/logo.png" type="image/png" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/angular-motion/0.4.4/angular-motion.css" />
@@ -21,8 +21,8 @@
 					</div>
 					<form class="navbar-form navbar-right" name="authForm" id="authForm" novalidate>
 						<div class="input-group" >
-							<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
 							<input type="password" class="form-control" placeholder="Password" name="password"  id="password" data-ng-focus="warningRemove()" data-ng-keyup="authCheck()" data-ng-model="password" required />
+							<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
 						</div>
 					</form>
 				</div>
@@ -30,20 +30,27 @@
 		</header>
 		<div class="container-fluid">
 			<aside id="messageBox"></aside>
-			<div data-ng-show="authorized" data-ng-cloak>
+			<div data-ng-if="authorized" data-ng-cloak>
 				<section id="users">
 					<header class="page-header">
 						<img src="{{pic}}" alt="{{user}}" class="userPic" /><h3 data-ng-bind="user"></h3>
 					</header>
 				</section>
-				<section id="results" data-ng-cloak>
+				<section id="results">
 					<div class="row">
-						<div class="col-md-8  col-offset-md-2">
+						<div class="col-md-8  col-md-offset-2">
 							<form name="searchForm">
-								<input type="search" placeholder="Cerca" class="form-control"  data-ng-model="search" />
+								<div class="input-group">
+									 <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+									<input type="search" placeholder="Filtra" class="form-control" data-ng-model="search" />
+								</div>
 							</form>
-							<section id="contacts" data-ng-repeat="contact in contacts.details | filter: search">
-								<p>{{contact.firstname | capitalize:true }} {{contact.lastname | capitalize:true }}</p>
+							<section id="contacts">
+								<hr />
+								<div class="media" data-ng-repeat="contact in contacts.details | filter: search">
+									<h3 class="media-heading">{{contact.firstname | capitalize:true }} {{contact.lastname | capitalize:true }}  <br /><small><i class="fa fa-address-card"></i>  {{contact.esncard | uppercase}}</small></h3>
+									<div class="media-body"><i class="fa fa-mobile-phone fa-lg"></i>  {{contact.mobile}} <i class="fa fa-envelope fa-lg"></i>  {{contact.email | lowercase}}</div>
+								</div>
 								
 							</section>
 						</div>

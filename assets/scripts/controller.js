@@ -1,5 +1,41 @@
 app.controller("mainCtrl", function($scope, $http, $alert){
 	
+	var alerts = {
+		connectionError: $alert({
+			title: 'Ooops..',
+			content: 'si &egrave; verificato un errore di connessione!',
+			type: 'danger',
+			container: '#messageBox',
+			show: false
+		}),
+		authNeeded: $alert({
+			title: 'ATTENZIONE',
+			content: 'Per visualizzare i contenuti di questa applicazione, devi inserire la password del tuo account IULManager',
+			type: 'warning',
+			container: '#messageBox',
+			show: true
+		}),
+		authDenied: $alert({
+			title: 'NON AUTORIZZATO',
+			content: 'La password inserita non &egrave; corretta.',
+			type: 'danger',
+			container: '#messageBox',
+			show: false
+		})
+	};
+	
+	$scope.authorized = false;
+	$scope.user;
+	$scope.pic = '../ufficio/img/fotoprofilo/nopic.jpg';
+	
+	 $scope.userPic = function(img){
+		$scope.pic = '../ufficio/img/fotoprofilo/'+img+'.jpg';
+	}
+	
+	$scope.warningRemove = function(){
+		return alerts.authNeeded.hide();
+	}
+	
 	$http.get('http://www.esniulm.it/api/get_users.php')
 	.then(
 	function(success){
@@ -26,42 +62,9 @@ app.controller("mainCtrl", function($scope, $http, $alert){
 		alerts.connectionError.show();
 	});
 	
-	var alerts = {
-		connectionError: $alert({
-			title: 'Ooops..',
-			content: 'si &egrave; verificato un errore di connessione!',
-			type: 'danger',
-			container: '#messageBox',
-			show: false
-		}),
-		authNeeded: $alert({
-			title: 'ATTENZIONE',
-			content: 'Per visualizzare i contenuti di questa applicazione, devi inserire la password del tuo account IULManager',
-			type: 'warning',
-			container: '#messageBox',
-			show: true
-		}),
-		authDenied: $alert({
-			title: 'NON AUTORIZZATO',
-			content: 'La password inserita non &egrave; corretta.',
-			type: 'danger',
-			container: '#messageBox',
-			show: false
-		})
-	};
 	
 	
-	$scope.warningRemove = function(){
-		return alerts.authNeeded.hide();
-	}
 	
-	
-	$scope.authorized = false;
-	$scope.user;
-	$scope.pic = '../ufficio/img/fotoprofilo/nopic.jpg';
-	$scope.userPic = function(img){
-		$scope.pic = '../ufficio/img/fotoprofilo/'+img+'.jpg';
-	}
 	
 	$scope.authCheck = function(){
 		if (!$scope.password || $scope.password == ''){

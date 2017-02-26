@@ -3,6 +3,7 @@ body{
 	background-image: url(http://www.esniulm.it/rocket/assets/img/matita.png);
 	background-position: left bottom;
 	background-repeat: repeat-x;
+	font-family: "Century Gothic", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	height:100%;
 	z-index:-1
 }
@@ -27,6 +28,20 @@ body{
 	overflow:hidden;
 	height:5vw;
 	width:5vw;
+}
+
+#contacts{
+	font-family: "Century Gothic", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#contacts .fa{
+	color: #ed0599;
+}
+
+#contacts .media{
+	border-bottom: 1px solid #666;
+	margin: 20px 0;
+	padding-bottom:5px;
 }
 
 #messageBox{
