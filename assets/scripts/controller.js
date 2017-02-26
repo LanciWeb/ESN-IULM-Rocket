@@ -3,7 +3,7 @@ app.controller("mainCtrl", function($scope, $http, $alert){
 	$http.get('http://www.esniulm.it/api/get_users.php')
 	.then(
 	function(success){
-		console.log(success.data);
+		// console.log(success.data);
 		alerts.connectionError.hide();
 		$scope.users = success.data;
 	},
@@ -11,6 +11,19 @@ app.controller("mainCtrl", function($scope, $http, $alert){
 		console.log(failure.status+' '+failure.statusText); 
 		alerts.authNeeded.hide();
 		return alerts.connectionError.show();
+	});
+	
+	$http.get('http://www.esniulm.it/api/get_contacts.php')
+	.then(
+	function(success){
+		console.log(success.data);
+		alerts.connectionError.hide();
+		$scope.contacts = success.data;
+	},
+	function(failure){
+		console.log(failure.status +' '+ failure.statusText);
+		alerts.authNeeded.hide();
+		alerts.connectionError.show();
 	});
 	
 	var alerts = {

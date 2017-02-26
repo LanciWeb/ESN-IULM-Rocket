@@ -22,7 +22,7 @@
 					<form class="navbar-form navbar-right" name="authForm" id="authForm" novalidate>
 						<div class="input-group" >
 							<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-							<input type="password" class="form-control" placeholder="Password" name="password"  id="password" data-ng-focus="warningRemove()" data-ng-keyup="authCheck()" data-ng-model="password"  required />
+							<input type="password" class="form-control" placeholder="Password" name="password"  id="password" data-ng-focus="warningRemove()" data-ng-keyup="authCheck()" data-ng-model="password" required />
 						</div>
 					</form>
 				</div>
@@ -30,18 +30,22 @@
 		</header>
 		<div class="container-fluid">
 			<aside id="messageBox"></aside>
-			<div data-ng-show="authorized" data-ng-cloack>
+			<div data-ng-show="authorized" data-ng-cloak>
 				<section id="users">
 					<header class="page-header">
 						<img src="{{pic}}" alt="{{user}}" class="userPic" /><h3 data-ng-bind="user"></h3>
 					</header>
 				</section>
-				<section id="results">
+				<section id="results" data-ng-cloak>
 					<div class="row">
-						<div class="col-md-8  offset-md-2">
-						<form name="searchForm">
-							<input type="search" placeholder="Cerca" class="form-control" data-ng-keyup="filter()" data-ng-model="search" />
-						</form>
+						<div class="col-md-8  col-offset-md-2">
+							<form name="searchForm">
+								<input type="search" placeholder="Cerca" class="form-control"  data-ng-model="search" />
+							</form>
+							<section id="contacts" data-ng-repeat="contact in contacts.details | filter: search">
+								<p>{{contact.firstname | capitalize:true }} {{contact.lastname | capitalize:true }}</p>
+								
+							</section>
 						</div>
 					</div>
 				</section>
