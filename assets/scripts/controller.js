@@ -62,10 +62,6 @@ app.controller("mainCtrl", function($scope, $http, $alert){
 		alerts.connectionError.show();
 	});
 	
-	
-	
-	
-	
 	$scope.authCheck = function(){
 		if (!$scope.password || $scope.password == ''){
 			alerts.authDenied.hide();
@@ -89,4 +85,8 @@ app.controller("mainCtrl", function($scope, $http, $alert){
 		}
 		($scope.authorized) ? console.log('autorizzato') : console.log('non autorizzato');
 	};
+	
+	$scope.sex = function(sex){
+		return (sex === "M") ? "fa fa-male" : "fa fa-female";
+	}
 })

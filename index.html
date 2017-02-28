@@ -29,8 +29,8 @@
 			</nav>
 		</header>
 		<div class="container-fluid">
-			<aside id="messageBox"></aside>
-			<div data-ng-if="authorized" data-ng-cloak>
+			<dialog id="messageBox"></dialog>
+			<div data-ng-show="authorized" data-ng-cloak>
 				<section id="users">
 					<header class="page-header">
 						<img src="{{pic}}" alt="{{user}}" class="userPic" /><h3 data-ng-bind="user"></h3>
@@ -47,10 +47,55 @@
 							</form>
 							<section id="contacts">
 								<hr />
-								<div class="media" data-ng-repeat="contact in contacts.details | filter: search">
-									<h3 class="media-heading">{{contact.firstname | capitalize:true }} {{contact.lastname | capitalize:true }}  <br /><small><i class="fa fa-address-card"></i>  {{contact.esncard | uppercase}}</small></h3>
-									<div class="media-body"><i class="fa fa-mobile-phone fa-lg"></i>  {{contact.mobile}} <i class="fa fa-envelope fa-lg"></i>  {{contact.email | lowercase}}</div>
-								</div>
+								<section class="media" data-ng-repeat="contact in contacts.details | filter: search">
+									<h3 class="media-heading" data-toggle="collapse" data-target="{{'#'+contact.esncard}}">{{contact.name | capitalize:true }} <small><i data-ng-class="sex(contact.sex)"></i></small></h3>
+									<div class="media-body" data-toggle="collapse" data-target="{{'#'+contact.esncard}}">
+										<i class="fa fa-mobile-phone fa-2x"></i> {{contact.mobile}} <br />
+										<i class="fa fa-envelope fa-lg"></i>  {{contact.email | lowercase}}
+									</div>
+									<div id="{{contact.esncard}}" class="collapse">
+										<div class="row">
+											<div class="col-xs-6">
+												<i class="fa fa-address-card-o"></i>  {{contact.esncard | uppercase}}
+											</div>
+											<div class="col-xs-6">
+												<i class="fa fa-hourglass-end"></i>  {{contact.expiration}}
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-xs-6">
+												<i class="fa fa-font-awesome"></i>  {{contact.country | capitalize:true}}
+											</div>
+											<div class="col-xs-6">
+												<i class="	fa fa-birthday-cake"></i>  {{contact.birthday}}
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-xs-6">
+												<i class="fa fa-drivers-license"></i>  {{contact.document_type | capitalize:true}}
+											</div>
+											<div class="col-xs-6">
+												 <i class="fa fa-hashtag"></i>  {{contact.document_id | uppercase }}
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-xs-6">
+												<i class="fa fa-graduation-cap"></i>  {{contact.university}}
+											</div>
+											<div class="col-xs-6">
+												 <i class="fa fa-clock-o"></i>  {{contact.period | capitalize:true  }}
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-xs-6">
+												<i class="fa fa-id-badge"></i>  {{contact.status}}
+											</div>
+											<div class="col-xs-6">
+												 <i class="fa fa-facebook-square"></i>  {{contact.facebook | capitalize:true  }}
+											</div>
+										</div>
+									</div>
+								</section>
 								
 							</section>
 						</div>
