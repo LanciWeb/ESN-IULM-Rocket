@@ -1,1 +1,2 @@
 27/02/17 Ver. 1.0.1 - Migliorata la ricerca.
+01/3/17 Ver 1.1	- E' ora possibile chiamare o mandare la mail con un click sull'icona

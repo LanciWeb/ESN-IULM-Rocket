@@ -4,9 +4,12 @@
 		<meta charset="utf-8" />
 		<meta name="author" content="Marco Lancellotti" />
 		<meta name="description" content="Trova i contatti degli Erasmus in un batter d'occhio!" />
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+		<meta http-equiv="Pragma" content="no-cache"/>
+		<meta http-equiv="Expires" content="0"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>ESN IULM Rocket</title>
-		<link rel="icon" href="http://www.esniulm.it/profiles/satellite/themes/esnsatellite/logo.png" type="image/png" />
+		<link rel="icon" href="assets/img/icon.png" type="image/png" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/angular-motion/0.4.4/angular-motion.css" />
@@ -29,7 +32,7 @@
 			</nav>
 		</header>
 		<div class="container-fluid">
-			<dialog id="messageBox"></dialog>
+			<section id="messageBox"></section>
 			<div data-ng-show="authorized" data-ng-cloak>
 				<section id="users">
 					<header class="page-header">
@@ -50,10 +53,10 @@
 								<section class="media" data-ng-repeat="contact in contacts.details | filter: search">
 									<h3 class="media-heading" data-toggle="collapse" data-target="{{'#'+contact.esncard}}">{{contact.name | capitalize:true }} <small><i data-ng-class="sex(contact.sex)"></i></small></h3>
 									<div class="media-body" data-toggle="collapse" data-target="{{'#'+contact.esncard}}">
-										<i class="fa fa-mobile-phone fa-2x"></i> {{contact.mobile}} <br />
-										<i class="fa fa-envelope fa-lg"></i>  {{contact.email | lowercase}}
+										<a href="{{'tel:'+contact.mobile}}"><i class="fa fa-mobile-phone fa-2x"></i></a> {{contact.mobile}} <br />
+										<a a href="{{'mailto:'+contact.email | lowercase}}"><i class="fa fa-envelope fa-lg"></i></a> {{contact.email | lowercase}}
 									</div>
-									<div id="{{contact.esncard}}" class="collapse">
+									<div id="{{contact.esncard}}" class="collapse" data-toggle="collapse" data-target="{{'#'+contact.esncard}}">
 										<div class="row">
 											<div class="col-xs-6">
 												<i class="fa fa-address-card-o"></i>  {{contact.esncard | uppercase}}
@@ -91,7 +94,7 @@
 												<i class="fa fa-id-badge"></i>  {{contact.status}}
 											</div>
 											<div class="col-xs-6">
-												 <i class="fa fa-facebook-square"></i>  {{contact.facebook | capitalize:true  }}
+												 <a href="{{'https://www.facebook.com/search/top/?q='+contact.facebook}}" target="_blank"><i class="fa fa-facebook-square"></i>  {{contact.facebook | capitalize:true  }}</a>
 											</div>
 										</div>
 									</div>
